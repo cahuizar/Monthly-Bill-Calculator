@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+button:hover {
+    cursor: pointer;
+}
+.bill-component {
+    margin-top: 2em;
+    padding: 1em 0em;
+    border-radius: 1em;
+    border: 1px dashed #22A3F3;
+}

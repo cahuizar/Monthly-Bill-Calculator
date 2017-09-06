@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="col-">
+      <h4>New Bill</h4>
+        <div class="alert alert-info" role="alert">
+            <strong>Yo!</strong> Use the form below to create a new bill to add to the list of bills.
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-">
+      <form>
+          <div class="form-group">
+            <label for="billName">Name</label>
+            <input type="text" class="form-control" id="billName">
+          </div>
+          <div class="form-group">
+            <label for="billPrice">Price</label>
+            <input type="text" class="form-control" id="billPrice">
+          </div>
+          <button type="button" class="btn btn-primary" (click)="createBill()">+ Create Bill</button>
+      </form>
+    </div>
+  </div>
