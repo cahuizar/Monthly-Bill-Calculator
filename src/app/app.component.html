@@ -1,43 +1,53 @@
 <div class="container">
   <div class="row">
     <div class="col-">
-      <h1>Bill Calculator</h1>
+      <h1 class="display-4">Bill Calculator</h1>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 offset-1">
+    <div class="col-10 ml-auto">
       <div class="row">
-        <div class="col-">
-          <h4>New Bill</h4>
-            <div class="alert alert-info" role="alert">
-                <strong>Yo!</strong> Use the form below to create a new bill to add to the list of bills.
-            </div>
+        <div class="col-12">
+          <p class="lead">Use the form below to create a new bill to add to the list of bills.</p>
         </div>
       </div>
-      <div class="row">
-        <div class="col- offset-md-1">
-          <form>
-              <div class="form-group">
-                <label for="billName">Bill Name:</label>
+        <form>
+            <div class="form-group row">
+              <label for="billName" class="col-12">Bill Name:</label>
+              <div class="col-12 col-md-5">
                 <input type="text" class="form-control" id="billName" #billName>
               </div>
-              <div class="form-group">
-                <label for="billPrice">Bill Price:</label>
-                <input type="text" class="form-control" id="billPrice" #billPrice>
+            </div>
+            <div class="form-group row">
+              
+              <label for="billPrice" class="col-12">Bill Price:</label>
+              <div class="col-12 col-md-5">
+                <input type="text" [ngClass]="{'form-control': true, 'valid': isValidVisible, 'is-invalid': isInvalidVisible}" #billPrice>
+                <span id="helpBlock2" class="text-danger">{{priceError}}</span>
               </div>
-              <button type="button" class="btn btn-primary" (click)="createBill(billName, billPrice)">+ Create Bill</button>
-          </form>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="createBill(billName, billPrice)">+ Create Bill</button>
+        </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-10 col-md-8 ml-auto ml-md-auto">
+      <app-bill
+        *ngFor="let bill of bills"
+        [bill]= "bill">
+      </app-bill>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8 ml-auto">
+      <div class="summary">
+        <div class="row">
+          <div class="col-12">
+            <p class="total">Total Price: <span class="total-price">${{totalPrice}}</span></p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-      <div class="col-10 offset-1">
-        <app-bill
-          *ngFor="let bill of bills"
-          [bill]= "bill">
-        </app-bill>
-      </div>
-    </div>
 </div>
 

@@ -2,9 +2,28 @@ a:hover, button:hover {
     cursor: pointer;
 }
 
+h3 {
+    font-weight: 300;
+    line-height: 1.1;
+}
+
 .bill-component {
     margin-top: 2em;
     padding: 1em 0em;
     border-radius: 1em;
     border: 1px dashed #22A3F3;
+}
+
+.summary {
+    margin-top: 2em;
+}
+
+.total {
+    font-size: 1.5em;
+    color: #087E18;
+    font-weight: bold;
+}
+
+.error {
+    color: #dc3545;
 }

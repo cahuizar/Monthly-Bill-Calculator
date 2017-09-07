@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { BillComponent } from './bill/bill.component';
+import { SummarygitComponent } from './summarygit/summarygit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BillComponent
+    BillComponent,
+    SummarygitComponent
   ],
   imports: [
     BrowserModule

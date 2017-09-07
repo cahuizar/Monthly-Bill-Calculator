@@ -8,18 +8,45 @@ import { Bill } from './bill/bill.model';
 })
 export class AppComponent {
   bills: Bill[];
-  totalPrice: string;
+  totalPrice: number;
+  priceError: string;
+  isValidVisible: boolean;
+  isInvalidVisible: boolean;
+
+
   constructor() {
     this.bills = [];
-    this.totalPrice = "";
+    this.totalPrice = 0;
+    this.priceError = "";
+    this.isValidVisible = true;
+    this.isInvalidVisible = false;
+
   }
 
   createBill(billName: HTMLInputElement, billPrice: HTMLInputElement): boolean {
-    this.bills.push(new Bill(billName.value, billPrice.value));
-    this.totalPrice += billPrice;
-    billName.value = "";
-    billPrice.value = "";
+    if(this.isNum(billPrice.value)) {
+      this.bills.push(new Bill(billName.value, billPrice.value));
+      this.totalPrice += + billPrice.value;
+      billName.value = "";
+      billPrice.value = "";
+      this.priceError = "";
+      this.isInvalidVisible = false;
+      this.isValidVisible = true;
+    } else {
+      this.priceError = "Yo, make sure you are using a number...";
+      this.isInvalidVisible = true;
+      this.isValidVisible = false;
+    }
+    
     return false;
+  }
+
+  isNum(price: string): boolean {
+    const pattern = /[+-]?([0-9]*[.])?[0-9]+/;
+    if(!pattern.test(price)) {
+      return false;
+    }
+    return true;
   }
 
 }
