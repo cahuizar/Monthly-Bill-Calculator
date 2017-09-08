@@ -1,5 +1,20 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body{
+    background-color: #222;
+}
 a:hover, button:hover {
     cursor: pointer;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.container{
+    background-color: white;
 }
 
 h3 {
@@ -21,9 +36,19 @@ h3 {
 .total {
     font-size: 1.5em;
     color: #087E18;
-    font-weight: bold;
+    font-weight: 300;
 }
 
 .error {
     color: #dc3545;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.header {
+    font-size: 1.5em;
+    font-weight: 400;
+    color: 
 }

@@ -1,19 +1,21 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MdButtonModule,  MdInputModule, } from '@angular/material';
 
 import { AppComponent } from './app.component';
-
 import { BillComponent } from './bill/bill.component';
-import { SummarygitComponent } from './summarygit/summarygit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BillComponent,
-    SummarygitComponent
+    BillComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

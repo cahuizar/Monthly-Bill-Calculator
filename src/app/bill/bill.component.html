@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-12 col-md-4 offset-md-4">
-    <div class="bill-component">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h5><span class="bill-value">{{bill.name}}</span> Bill</h5>
-          <p class="bill-label">Price: <span class="bill-value">${{bill.price}}</span></p>
-        </div>
-      </div>
-    </div>
+  <div class="col-1 col-md-1 ml-auto ml-md-auto">
+      <!-- <p class="bill-value">{{bill.counter}}</p> -->
+      <p class="bill-counter">0</p>
+  </div>
+  <div class="col-4 col-md-2">
+    <p class="bill-value">{{bill.name}}</p>
+  </div>
+  <div class="col-5 col-md-5">
+    <p class="bill-label">${{bill.price}}</p>
   </div>
 </div>

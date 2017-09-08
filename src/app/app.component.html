@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-4">
   <div class="row">
-    <div class="col-">
-      <h1 class="display-4">Bill Calculator</h1>
+    <div class="col-12">
+      <h1 class="display-4 text-center mt-4 mb-4">Billculator</h1>
     </div>
   </div>
   <div class="row">
@@ -13,31 +13,41 @@
       </div>
         <form>
             <div class="form-group row">
-              <label for="billName" class="col-12">Bill Name:</label>
-              <div class="col-12 col-md-5">
-                <input type="text" class="form-control" id="billName" #billName>
+              <div class="col-12 col-md-4">
+                <md-form-field class="full-width">
+                    <input mdInput placeholder="Bill Name"  [ngClass]="{'form-control': true, 'valid': isNameValidVisible, 'is-invalid': isNameInvalidVisible}" #billName>
+                </md-form-field>
+                <span class="text-danger">{{nameError}}</span>
               </div>
             </div>
             <div class="form-group row">
-              
-              <label for="billPrice" class="col-12">Bill Price:</label>
-              <div class="col-12 col-md-5">
-                <input type="text" [ngClass]="{'form-control': true, 'valid': isValidVisible, 'is-invalid': isInvalidVisible}" #billPrice>
-                <span id="helpBlock2" class="text-danger">{{priceError}}</span>
+              <div class="col-12 col-md-4">
+                  <md-form-field class="full-width">
+                      <input mdInput placeholder="Bill Price" [ngClass]="{'form-control': true, 'valid': isValidVisible, 'is-invalid': isInvalidVisible}" type="number" #billPrice>
+                  </md-form-field>
+
+                <span class="text-danger">{{priceError}}</span>
               </div>
             </div>
-            <button type="button" class="btn btn-primary" (click)="createBill(billName, billPrice)">+ Create Bill</button>
+            <button md-raised-button color="primary" (click)="createBill(billName, billPrice)">+ Create Bill</button>
         </form>
     </div>
   </div>
   <div class="row">
-    <div class="col-10 col-md-8 ml-auto ml-md-auto">
-      <app-bill
-        *ngFor="let bill of bills"
-        [bill]= "bill">
-      </app-bill>
+    <div class="col-1 col-md-1 ml-auto ml-md-auto">
+      <p class="header">#</p>
+    </div>
+    <div class="col-4 col-md-2">
+      <p class="header">Name</p>
+    </div>
+    <div class="col-5 col-md-5">
+      <p class="header">Price</p>
     </div>
   </div>
+    <app-bill
+      *ngFor="let bill of bills"
+      [bill]= "bill">
+    </app-bill>
   <div class="row">
     <div class="col-8 ml-auto">
       <div class="summary">

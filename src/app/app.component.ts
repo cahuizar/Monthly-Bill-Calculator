@@ -9,7 +9,10 @@ import { Bill } from './bill/bill.model';
 export class AppComponent {
   bills: Bill[];
   totalPrice: number;
+  nameError: string;
   priceError: string;
+  isNameInvalidVisible: boolean;
+  isNameValidVisible: boolean;
   isValidVisible: boolean;
   isInvalidVisible: boolean;
 
@@ -18,27 +21,52 @@ export class AppComponent {
     this.bills = [];
     this.totalPrice = 0;
     this.priceError = "";
+    this.nameError = "";
+    this.isNameValidVisible = true;
+    this.isNameInvalidVisible = false;
     this.isValidVisible = true;
     this.isInvalidVisible = false;
-
   }
 
   createBill(billName: HTMLInputElement, billPrice: HTMLInputElement): boolean {
-    if(this.isNum(billPrice.value)) {
+    if(this.isFormValid(billName, billPrice)) { 
       this.bills.push(new Bill(billName.value, billPrice.value));
       this.totalPrice += + billPrice.value;
       billName.value = "";
       billPrice.value = "";
       this.priceError = "";
-      this.isInvalidVisible = false;
-      this.isValidVisible = true;
+    }
+    return false;
+  }
+
+  isFormValid(billName: HTMLInputElement, billPrice: HTMLInputElement): boolean {
+    var hasError: boolean = false;
+    if(billName.value == "") {
+      hasError = true;
+      this.nameError = "Name cannot be empty."
+      this.isNameInvalidVisible = true;
+      this.isNameValidVisible = false;
     } else {
-      this.priceError = "Yo, make sure you are using a number...";
+      this.nameError = "";
+      this.isNameInvalidVisible = false;
+      this.isNameValidVisible = true;
+    }
+
+    if(!this.isNum(billPrice.value)) {
+      hasError = true;
+      this.priceError = "Make sure you are using a number.";
       this.isInvalidVisible = true;
       this.isValidVisible = false;
+    } else {
+      this.priceError = "";
+      this.isInvalidVisible = false;
+      this.isValidVisible = true;
     }
-    
-    return false;
+
+    if(hasError) {
+      return false;
+    }
+    return true;
   }
 
   isNum(price: string): boolean {
